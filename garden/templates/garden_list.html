@@ -1,0 +1,7 @@
+<h1>Garden List</h1>
+{% for garden in object_list %}
+<div>
+  <h2><a href="{% url 'garden_detail' garden.pk %}">{{ garden.name }}</a></h2>
+  <p>{{ garden.description }}</p>
+</div>
+{% endfor %}
