@@ -33,7 +33,7 @@ select = [
     # mccabe
     "C901",
     # pydocstyle
-    "D",
+    # "D",
     # flake8-pytest-style
     "PT"
 ]
