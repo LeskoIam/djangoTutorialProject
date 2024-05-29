@@ -3,6 +3,12 @@ name = "djangoTutorialProject"
 readme = "README.md"
 
 
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "djangoTutorialProject.settings"
+# -- recommended but optional:
+python_files = ["test_*.py", "*_test.py", "testing/python/*.py", "tests.py"]
+
+
 [tool.ruff]
 target-version = "py312"
 line-length = 121
