@@ -21,4 +21,5 @@ class GardenDetailView(View):
         garden = Garden.objects.get(pk=pk)
         beds = GardenBed.objects.filter(garden=garden)
         plants = {bed: Plant.objects.filter(garden_bed=bed) for bed in beds}
+        print(plants)
         return render(request, "garden_detail.html", {"garden": garden, "beds": beds, "plants": plants})

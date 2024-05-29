@@ -3,10 +3,22 @@
 <div>
   <h2>{{ garden.name }}</h2>
   <hr>
+<ul>
     {% for bed in beds %}
-        <p>Bed Name: {{ bed.name }}</p>
-        <p>Description: {{ bed.description }}</p>
-        <p>Plants: {{ plants }}</p>
+        <li>Bed Name: {{ bed.name }}</li>
+        <li>Description: {{ bed.description }}</li>
+        <li>Plants: 
+            <ul>
+            {% for plant_bed, bed_plants in plants.items %} 
+                {% if bed.id == plant_bed.id and bed_plants|length > 0%}
+                    {% for plant in bed_plants %}
+                        <li>{{ plant }}</li>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </li>
         <hr>
     {% endfor %}
+</ul>
 </div>
