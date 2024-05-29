@@ -1,4 +1,4 @@
-Ruffly following [DjangoX tutorial](https://learndjango.com/tutorials/django-blog-tutorial) | [GitHub](https://github.com/wsvincent/djangox)
+Ruffly following [DjangoX tutorial](https://learndjango.com/tutorials/django-blog-tutorial) | [GitHub](https://github.com/wsvincent/djangox) and other online sources.
 
 
 ## Project setup and initial stuff
@@ -57,7 +57,4 @@ flowchart TD
     init --> create_app
     create_app --> dev
     dev --> migrate --> run
-    run --> dev
-    dev --> run
-    
 ```
