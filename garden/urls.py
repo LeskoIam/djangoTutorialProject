@@ -5,7 +5,7 @@
 
 from django.urls import path
 
-from .views import GardenListView, GardenDetailView
+from .views import GardenDetailView, GardenListView
 
 urlpatterns = [
     path("<int:pk>/", GardenDetailView.as_view(), name="garden_detail"),
