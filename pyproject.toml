@@ -10,6 +10,7 @@ indent-width = 4
 
 # Exclude files
 #extend-exclude = ["setup.py"]
+exclude = ["migrations"]
 
 [tool.ruff.lint]
 # select = ["ALL"]
@@ -54,7 +55,13 @@ ignore = [
     # Multi-line docstring summary should start at the second line
     "D213",
     # First line should end with a period
-    "D400"]
+    "D400",
+    "D401",
+    # Invalid module name
+    "N999",
+    # Unused import
+    "F401"
+]
 
 # Avoid trying to fix flake8-bugbear (`B`) violations
 unfixable = ["B"]
