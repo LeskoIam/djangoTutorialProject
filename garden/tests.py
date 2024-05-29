@@ -20,7 +20,7 @@ class MyFirstTest(TestCase):
         garden = Garden.objects.get(name="Test Garden")
         beds = GardenBed.objects.filter(garden=garden)
 
-        self.assertEqual(len(beds), 1)
+        assert len(beds) == 1
 
     def test_number_of_plants(self):
         """Number of plants for garden bed is correct."""
@@ -28,4 +28,4 @@ class MyFirstTest(TestCase):
         beds = GardenBed.objects.filter(garden=garden)
         plants = Plant.objects.filter(garden_bed=beds[0])
 
-        self.assertEqual(len(plants), 3)
+        assert len(plants) == 3
