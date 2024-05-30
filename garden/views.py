@@ -1,9 +1,12 @@
-import logging
-
 from django.shortcuts import render
-from django.views.generic import ListView, TemplateView, View
+from django.views.generic import FormView, ListView, TemplateView, View
 
+from .forms import AddPlantForm
 from .models import Garden, GardenBed, Plant
+
+
+class GardenHomeView(TemplateView):
+    template_name = "home.html"
 
 
 class GardenListView(ListView):
@@ -21,5 +24,19 @@ class GardenDetailView(View):
         garden = Garden.objects.get(pk=pk)
         beds = GardenBed.objects.filter(garden=garden)
         plants = {bed: Plant.objects.filter(garden_bed=bed) for bed in beds}
-        print(plants)
         return render(request, "garden_detail.html", {"garden": garden, "beds": beds, "plants": plants})
+
+
+class AddPlantView(FormView):
+    template_name = "add_plant_form.html"
+    form_class = AddPlantForm
+    success_url = "/garden/garden"
+
+    def form_valid(self, form):
+        """This method is called when valid form data has been posted
+        Returns:
+            HttpResponse
+        """
+        p = Plant(name=form.cleaned_data["plant_name"], description=form.cleaned_data["plant_description"])
+        p.save()
+        return super().form_valid(form)

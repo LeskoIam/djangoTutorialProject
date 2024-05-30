@@ -5,9 +5,11 @@
 
 from django.urls import path
 
-from .views import GardenDetailView, GardenListView
+from . import views
 
 urlpatterns = [
-    path("<int:pk>/", GardenDetailView.as_view(), name="garden_detail"),
-    path("", GardenListView.as_view(), name="garden_list"),
+    path("", views.GardenHomeView.as_view(), name="home"),
+    path("garden/", views.GardenListView.as_view(), name="garden_list"),
+    path("garden/<int:pk>/", views.GardenDetailView.as_view(), name="garden_detail"),
+    path("garden/addplant/", views.AddPlantView.as_view(), name="add_plant"),
 ]
