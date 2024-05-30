@@ -19,7 +19,7 @@ class GardenBed(models.Model):
 
 
 class Plant(models.Model):
-    garden_bed = models.ForeignKey(GardenBed, on_delete=models.CASCADE)
+    garden_bed = models.ManyToManyField(GardenBed)
     name = models.CharField(max_length=100)
     description = models.TextField()
 

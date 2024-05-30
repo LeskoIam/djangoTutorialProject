@@ -11,9 +11,11 @@ class MyFirstTest(TestCase):
         garden_bed = GardenBed.objects.create(
             garden=garden, name="Test Garden Bed", description="Test Garden Bed Description 1"
         )
-        Plant.objects.create(garden_bed=garden_bed, name="Test Plant 1", description="Test Plant Description 1")
-        Plant.objects.create(garden_bed=garden_bed, name="Test Plant 2", description="Test Plant Description 2")
-        Plant.objects.create(garden_bed=garden_bed, name="Test Plant 3", description="Test Plant Description 3")
+
+        for plant_i in range(3):
+            p = Plant(name=f"Test Plant {plant_i}", description=f"Test Plant Description{plant_i}")
+            p.save()
+            p.garden_bed.add(garden_bed)
 
     def test_number_of_garden_beds(self):
         """Number of garden beds for garden is correct."""
